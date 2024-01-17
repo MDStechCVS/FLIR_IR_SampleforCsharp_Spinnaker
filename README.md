@@ -1,0 +1,1 @@
+# FLIR_IR_SampleforCsharp_Spinnaker
