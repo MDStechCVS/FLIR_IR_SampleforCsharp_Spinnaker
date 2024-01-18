@@ -1,7 +1,7 @@
-![mds](https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/d301dcfe-14c9-4ec5-91e7-9ee2b01314b2)
+<img width="320" alt="mds" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/d301dcfe-14c9-4ec5-91e7-9ee2b01314b2">
 
 # FLIR_IR_SampleforCsharp_Spinnaker
-![image](https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/c182c5ee-7995-4a28-9cad-5ca0869c3489)
+<img width="527" alt="image" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/c182c5ee-7995-4a28-9cad-5ca0869c3489">
 
 FLIR IR 카메라 Ax5의 영상과 최대/최소 온도 값, 특정 영역(ROI)의 최대/최소 온도 값을 보여주는 예제입니다. 
 
@@ -23,8 +23,7 @@ Windows11
 
 ### [Spinnaker SDK 3.1.0.97 Download site ( FLIR Site (Login Only) )](https://www.flir.com/support-center/iis/machine-vision/downloads/spinnaker-sdk-download/spinnaker-sdk--download-files/)
 
-![spinnakersdk](https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/be85ee22-84f6-4c31-b609-b0fdb73e8c18)
-
+<img width="581" alt="spinnakersdk" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/be85ee22-84f6-4c31-b609-b0fdb73e8c18">
 
 ## Run
 Spinnaker SDK를 다운로드 및 설치한 후 소스를 빌드합니다. 
@@ -44,8 +43,12 @@ After running the program, select the camera you want to connect as shown below,
 
 
 
+
 Set ROI Box 버튼을 클릭하면 ROI 영역이 표시되고, 해당 영역안의 최대/최소 온도 값이 출력됩니다. 
+
 ![roibutton](https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/7deeac94-1b91-44db-bff4-e420296a541d)
+
+
 
 
 
