@@ -26,16 +26,16 @@ Windows11
 <img width="581" alt="spinnakersdk" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/be85ee22-84f6-4c31-b609-b0fdb73e8c18">
 
 ## Run
-Spinnaker SDK를 다운로드 및 설치한 후 소스를 빌드합니다. 
+ Spinnaker SDK를 다운로드 및 설치한 후 소스를 빌드합니다. 
 
 
-Download the Spinnaker SDK from the site above, install it, and then build the source.
+ Download the Spinnaker SDK from the site above, install it, and then build the source.
 
 
 프로그램을 실행 후, 아래와 같이 연결하고자 하는 카메라를 선택하면 영상과 온도값이 출력됩니다. 
 
 
-After running the program, select the camera you want to connect as shown below, and video and temperature values will be output.
+ After running the program, select the camera you want to connect as shown below, and video and temperature values will be output.
 
 
 <img width="650" alt="first" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/3ca82c71-cdf1-4839-b7a9-fc3544ff0ff8">
@@ -48,10 +48,10 @@ After running the program, select the camera you want to connect as shown below,
 
 
 
-Set ROI Box 버튼을 클릭하면 ROI 영역이 표시되고, 해당 영역안의 최대/최소 온도 값이 출력됩니다. 
+ Set ROI Box 버튼을 클릭하면 ROI 영역이 표시되고, 해당 영역안의 최대/최소 온도 값이 출력됩니다. 
 
 
-When you click the Set ROI Box button, the ROI area is displayed and the maximum/minimum temperature values within the area are displayed.
+ When you click the Set ROI Box button, the ROI area is displayed and the maximum/minimum temperature values within the area are displayed.
 
 
 <img width="650" alt="roibutton" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/7deeac94-1b91-44db-bff4-e420296a541d">
