@@ -38,9 +38,9 @@ Download the Spinnaker SDK from the site above, install it, and then build the s
 After running the program, select the camera you want to connect as shown below, and video and temperature values will be output.
 
 
-<img width="700" alt="first" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/3ca82c71-cdf1-4839-b7a9-fc3544ff0ff8">
+<img width="650" alt="first" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/3ca82c71-cdf1-4839-b7a9-fc3544ff0ff8">
 
-<img width="700" alt="second" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/78bde05b-aaa9-4c1b-8763-36d7376250cb">
+<img width="650" alt="second" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/78bde05b-aaa9-4c1b-8763-36d7376250cb">
 
 
 
@@ -53,10 +53,21 @@ Set ROI Box 버튼을 클릭하면 ROI 영역이 표시되고, 해당 영역안�
 
 
 
+
+
 ## Contact
 For bugs and inquiries, please contact us through GitHub Issues or team email.
 
 
+
 team email : cvs_team@mdstech.co.kr
+
+
+
+
+
+
+
+
 
 
