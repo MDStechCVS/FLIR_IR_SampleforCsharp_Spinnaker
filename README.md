@@ -37,9 +37,10 @@ Download the Spinnaker SDK from the site above, install it, and then build the s
 
 After running the program, select the camera you want to connect as shown below, and video and temperature values will be output.
 
-![first](https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/3ca82c71-cdf1-4839-b7a9-fc3544ff0ff8)
-![second](https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/78bde05b-aaa9-4c1b-8763-36d7376250cb)
 
+<img width="700" alt="first" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/3ca82c71-cdf1-4839-b7a9-fc3544ff0ff8">
+
+<img width="700" alt="second" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/78bde05b-aaa9-4c1b-8763-36d7376250cb">
 
 
 
