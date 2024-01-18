@@ -45,13 +45,18 @@ After running the program, select the camera you want to connect as shown below,
 
 
 
+
+
+
 Set ROI Box 버튼을 클릭하면 ROI 영역이 표시되고, 해당 영역안의 최대/최소 온도 값이 출력됩니다. 
 
-![roibutton](https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/7deeac94-1b91-44db-bff4-e420296a541d)
+
+When you click the Set ROI Box button, the ROI area is displayed and the maximum/minimum temperature values within the area are displayed.
 
 
+<img width="650" alt="roibutton" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/7deeac94-1b91-44db-bff4-e420296a541d">
 
-
+  
 
 
 
