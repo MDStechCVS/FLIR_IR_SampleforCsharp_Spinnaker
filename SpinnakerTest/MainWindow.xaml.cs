@@ -237,10 +237,7 @@ namespace SpinnakerTest
             maxSpot = new MeasureSpotValue(System.Drawing.Color.White);
             minSpot = new MeasureSpotValue(System.Drawing.Color.Yellow);
 
-            if (mCurWidth != 0 && mCurHeight != 0)
-            {
-                bmp = new Bitmap(mCurWidth, mCurHeight);
-            }
+
         }
 
         #region STEP01. CAMERA SELECT / EVENT
@@ -371,6 +368,9 @@ namespace SpinnakerTest
                     mCurWidth = 320;
                     mCurHeight = 256;
 
+                    bmp = new Bitmap(mCurWidth, mCurHeight);
+
+
                     IEnum iPixelFormat = nodeMap.GetNode<IEnum>("PixelFormat");
                     if (iPixelFormat != null && iPixelFormat.IsWritable)
                     {
@@ -405,11 +405,13 @@ namespace SpinnakerTest
                         }
                     }
                 }
-                else if (modelname.Contains("A645")) // FLIR Axx
+                else if (modelname.Contains("PT1000")) // FLIR Axx
                 {
                     stIntCamFrameArray = int640480;
                     mCurWidth = 640;
                     mCurHeight = 480;
+
+                    bmp = new Bitmap(mCurWidth, mCurHeight);
 
                     IEnum iPixelFormat = nodeMap.GetNode<IEnum>("PixelFormat");
                     if (iPixelFormat != null && iPixelFormat.IsWritable)
@@ -418,14 +420,6 @@ namespace SpinnakerTest
                         iPixelFormat.Value = iPixelFormatMono16.Value;
                         Console.WriteLine("iPixelFormatMono16 : " + nodeMap.GetNode<IEnum>("PixelFormat").ToString());
                     }
-
-                    //IEnum iDigitalOutput = nodeMap.GetNode<IEnum>("DigitalOutput");
-                    //if (iDigitalOutput != null && iDigitalOutput.IsWritable)
-                    //{
-                    //    IEnumEntry iDigitalOutput14bit = iDigitalOutput.GetEntryByName("bit14bit");
-                    //    iDigitalOutput.Value = iDigitalOutput14bit.Value;
-                    //    Console.WriteLine("iDigitalOutput14bit : " + nodeMap.GetNode<IEnum>("DigitalOutput").ToString());
-                    //}
 
                     IEnum iTemperatureLinearMode = nodeMap.GetNode<IEnum>("IRFormat");
                     if (iTemperatureLinearMode != null && iTemperatureLinearMode.IsWritable)
@@ -443,6 +437,8 @@ namespace SpinnakerTest
                     stIntCamFrameArray = int464348;
                     mCurWidth = 464;
                     mCurHeight = 348;
+
+                    bmp = new Bitmap(mCurWidth, mCurHeight);
 
                     IEnum iPixelFormat = nodeMap.GetNode<IEnum>("PixelFormat");
                     if (iPixelFormat != null && iPixelFormat.IsWritable)
@@ -464,7 +460,32 @@ namespace SpinnakerTest
                     }
                 }
                 else if (modelname.Contains("A70")) // A70, A700
-                { }
+                {
+                    stIntCamFrameArray = int640480;
+                    mCurWidth = 640;
+                    mCurHeight = 480;
+
+                    bmp = new Bitmap(mCurWidth, mCurHeight);
+
+                    IEnum iPixelFormat = nodeMap.GetNode<IEnum>("PixelFormat");
+                    if (iPixelFormat != null && iPixelFormat.IsWritable)
+                    {
+                        IEnumEntry iPixelFormatMono16 = iPixelFormat.GetEntryByName("Mono16");
+                        iPixelFormat.Value = iPixelFormatMono16.Value;
+                        Console.WriteLine("iPixelFormatMono16 : " + nodeMap.GetNode<IEnum>("PixelFormat").ToString());
+                    }
+
+                    IEnum iTemperatureLinearMode = nodeMap.GetNode<IEnum>("IRFormat");
+                    if (iTemperatureLinearMode != null && iTemperatureLinearMode.IsWritable)
+                    {
+                        IEnumEntry iTemperatureLinearMode100mk = iTemperatureLinearMode.GetEntryByName("TemperatureLinear100mK");
+                        iTemperatureLinearMode.Value = iTemperatureLinearMode100mk.Value;
+
+                        mConvertOffsetVal = mOffsetVal_01;
+
+                        Console.WriteLine("iTemperatureLinearMode 100mk : " + nodeMap.GetNode<IEnum>("IRFormat").ToString());
+                    }
+                }
 
             }
             catch (Exception ex)
