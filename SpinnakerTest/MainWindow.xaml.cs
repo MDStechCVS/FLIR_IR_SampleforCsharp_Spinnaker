@@ -35,20 +35,21 @@ namespace SpinnakerTest
 
         #region PRIVATE
 
-        const int int640480 = 640 * 480; 
+        const int int640480 = 640 * 480;
+        const int int464348 = 464 * 348;
         const int int320256 = 320 * 256;
 
         private int stIntCamFrameArray = int320256;
 
-        private int mCurWidth = 320;
-        private int mCurHeight = 256;
+        private int mCurWidth = 464;
+        private int mCurHeight = 348;
 
         private bool measureSpot = false;
         private int mPointIndex = 0;
 
         private bool measureSpot2 = false;
         private int mPointIndex2 = 0;
-        
+
         private bool bProcessing = false;
 
         // Offset Value 
@@ -64,6 +65,7 @@ namespace SpinnakerTest
 
         private Bitmap bmp = null;
         private int step = 256 / 4; // 총 4개의 간격으로 나눔
+        //private int step = 348 / 4; // 총 4개의 간격으로 나눔
 
         #endregion
 
@@ -252,7 +254,7 @@ namespace SpinnakerTest
             camSelControl.RegisterStartStopContextMenuEvent(ConditionalStreamingEvent);
 
             camSelControl.ShowModal(true);
-            
+
         }
 
         /// <summary>
@@ -263,7 +265,7 @@ namespace SpinnakerTest
         /// <param name="args">DeviceEventArgs</param>
         void ConditionalStreamingEvent(object sender, CameraSelectionWindow.DeviceEventArgs args)
         {
-            
+
         }
 
 
@@ -403,12 +405,63 @@ namespace SpinnakerTest
                         }
                     }
                 }
-                else if (modelname.Contains("A645"))
+                else if (modelname.Contains("A645")) // FLIR Axx
                 {
+                    stIntCamFrameArray = int640480;
+                    mCurWidth = 640;
+                    mCurHeight = 480;
 
+                    IEnum iPixelFormat = nodeMap.GetNode<IEnum>("PixelFormat");
+                    if (iPixelFormat != null && iPixelFormat.IsWritable)
+                    {
+                        IEnumEntry iPixelFormatMono16 = iPixelFormat.GetEntryByName("Mono16");
+                        iPixelFormat.Value = iPixelFormatMono16.Value;
+                        Console.WriteLine("iPixelFormatMono16 : " + nodeMap.GetNode<IEnum>("PixelFormat").ToString());
+                    }
+
+                    //IEnum iDigitalOutput = nodeMap.GetNode<IEnum>("DigitalOutput");
+                    //if (iDigitalOutput != null && iDigitalOutput.IsWritable)
+                    //{
+                    //    IEnumEntry iDigitalOutput14bit = iDigitalOutput.GetEntryByName("bit14bit");
+                    //    iDigitalOutput.Value = iDigitalOutput14bit.Value;
+                    //    Console.WriteLine("iDigitalOutput14bit : " + nodeMap.GetNode<IEnum>("DigitalOutput").ToString());
+                    //}
+
+                    IEnum iTemperatureLinearMode = nodeMap.GetNode<IEnum>("IRFormat");
+                    if (iTemperatureLinearMode != null && iTemperatureLinearMode.IsWritable)
+                    {
+                        IEnumEntry iTemperatureLinearMode100mk = iTemperatureLinearMode.GetEntryByName("TemperatureLinear100mK");
+                        iTemperatureLinearMode.Value = iTemperatureLinearMode100mk.Value;
+
+                        mConvertOffsetVal = mOffsetVal_01;
+
+                        Console.WriteLine("iTemperatureLinearMode 100mk : " + nodeMap.GetNode<IEnum>("IRFormat").ToString());
+                    }
                 }
                 else if (modelname.Contains("A50")) // A50, A500
                 {
+                    stIntCamFrameArray = int464348;
+                    mCurWidth = 464;
+                    mCurHeight = 348;
+
+                    IEnum iPixelFormat = nodeMap.GetNode<IEnum>("PixelFormat");
+                    if (iPixelFormat != null && iPixelFormat.IsWritable)
+                    {
+                        IEnumEntry iPixelFormatMono16 = iPixelFormat.GetEntryByName("Mono16");
+                        iPixelFormat.Value = iPixelFormatMono16.Value;
+                        Console.WriteLine("iPixelFormatMono16 : " + nodeMap.GetNode<IEnum>("PixelFormat").ToString());
+                    }
+
+                    IEnum iTemperatureLinearMode = nodeMap.GetNode<IEnum>("IRFormat");
+                    if (iTemperatureLinearMode != null && iTemperatureLinearMode.IsWritable)
+                    {
+                        IEnumEntry iTemperatureLinearMode100mk = iTemperatureLinearMode.GetEntryByName("TemperatureLinear100mK");
+                        iTemperatureLinearMode.Value = iTemperatureLinearMode100mk.Value;
+
+                        mConvertOffsetVal = mOffsetVal_01;
+
+                        Console.WriteLine("iTemperatureLinearMode 100mk : " + nodeMap.GetNode<IEnum>("IRFormat").ToString());
+                    }
                 }
                 else if (modelname.Contains("A70")) // A70, A700
                 { }
@@ -477,7 +530,7 @@ namespace SpinnakerTest
                 int x, y;
 
                 // Box 내 영역의 최대 최소 온도값 초기화
-                if(roiBox != null && roiBox.GetIsVisible() )
+                if (roiBox != null && roiBox.GetIsVisible())
                 {
                     roiBox.ResetMinMax();
                 }
@@ -491,19 +544,19 @@ namespace SpinnakerTest
 
                     if (rVal < step) //Blue to Cyan
                     {
-                        col = System.Drawing.Color.FromArgb(0, rVal * 4, 255);
+                        col = Color.FromArgb(0, rVal * 4, 255);
                     }
                     else if (rVal < step * 2) //Cyan to Green
                     {
-                        col = System.Drawing.Color.FromArgb(0, 255, 255 - (rVal - step) * 4);
+                        col = Color.FromArgb(0, 255, 255 - (rVal - step) * 4);
                     }
                     else if (rVal < step * 3) //Green to Yellow
                     {
-                        col = System.Drawing.Color.FromArgb((rVal - step * 2) * 4, 255, 0);
+                        col = Color.FromArgb((rVal - step * 2) * 4, 255, 0);
                     }
                     else //Yellow to Red
                     {
-                        col = System.Drawing.Color.FromArgb(255, 255 - (rVal - step * 3) * 4, 0);
+                        col = Color.FromArgb(255, 255 - (rVal - step * 3) * 4, 0);
                     }
 
                     // Box 내 영역의 최대 최소 온도값 체크
@@ -514,6 +567,8 @@ namespace SpinnakerTest
                         roiBox.CheckXYinBox(x, y, data[a]);
                     }
                 }
+
+
 
                 Graphics gr = Graphics.FromImage(bmp);
 
@@ -546,13 +601,14 @@ namespace SpinnakerTest
 
                 }
 
+
                 // Bitmap is ready - update image control
                 hBitmap = bmp.GetHbitmap();
                 BitmapSource bmpSrc = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
 
                 if (bmpSrc.CanFreeze)
                     bmpSrc.Freeze();
-                
+
                 this.backgroundImageBrush.ImageSource = bmpSrc;
 
                 DeleteObject(hBitmap);
@@ -571,8 +627,8 @@ namespace SpinnakerTest
 
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         static extern bool DeleteObject(IntPtr hObject);
-     
-       
+
+
 
         void threadProc(IManagedCamera cam)
         {
@@ -591,7 +647,7 @@ namespace SpinnakerTest
                         Console.WriteLine("cam is not valid");
                         break;
                     }
-                    
+
                     // Retrieve next received image and ensure image completion
                     using (IManagedImage rawImage = cam.GetNextImage())
                     {
@@ -618,6 +674,7 @@ namespace SpinnakerTest
 
                             //for (int a = 0; a < int640480x2; a += 2)
                             for (int a = 0; a < stIntCamFrameArray * 2; a += 2)
+                            //for (int a = 0; a < stIntCamFrameArray ; a++)
                             {
                                 ushort sample = BitConverter.ToUInt16(rawImage.ManagedData, a);
 
@@ -625,17 +682,17 @@ namespace SpinnakerTest
                                 {
                                     minValue = ((float)(sample) * mConvertOffsetVal) - 273.15;
                                     min16 = sample;
-                                    minSpot.SetPointIndex(a/2);
+                                    minSpot.SetPointIndex(a / 2);
                                     minSpot.SetTempVal(sample);
-                                 
+
                                 }
                                 else if (max16 < sample)
                                 {
                                     maxValue = ((float)(sample) * mConvertOffsetVal) - 273.15;
                                     max16 = sample;
-                                    maxSpot.SetPointIndex(a/2);
+                                    maxSpot.SetPointIndex(a / 2);
                                     maxSpot.SetTempVal(sample);
-                                    
+
                                 }
 
                                 imgArray[uint16Count] = sample;
@@ -708,7 +765,7 @@ namespace SpinnakerTest
             // 측정 영역 박스 좌표, 크기 설정
             roiBox = new MeasureBoxValue(System.Drawing.Color.Yellow, 100, 100, 100, 100);
             roiBox.SetIsVisible(true);
-          
+
         }
         #endregion
 
