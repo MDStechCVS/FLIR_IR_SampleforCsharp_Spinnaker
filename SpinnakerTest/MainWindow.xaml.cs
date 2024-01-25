@@ -38,11 +38,12 @@ namespace SpinnakerTest
         const int int640480 = 640 * 480;
         const int int464348 = 464 * 348;
         const int int320256 = 320 * 256;
+        const int int320240 = 320 * 240;
 
         private int stIntCamFrameArray = int320256;
 
-        private int mCurWidth = 464;
-        private int mCurHeight = 348;
+        private int mCurWidth = 320;
+        private int mCurHeight = 240;
 
         private bool measureSpot = false;
         private int mPointIndex = 0;
@@ -464,6 +465,33 @@ namespace SpinnakerTest
                     stIntCamFrameArray = int640480;
                     mCurWidth = 640;
                     mCurHeight = 480;
+
+                    bmp = new Bitmap(mCurWidth, mCurHeight);
+
+                    IEnum iPixelFormat = nodeMap.GetNode<IEnum>("PixelFormat");
+                    if (iPixelFormat != null && iPixelFormat.IsWritable)
+                    {
+                        IEnumEntry iPixelFormatMono16 = iPixelFormat.GetEntryByName("Mono16");
+                        iPixelFormat.Value = iPixelFormatMono16.Value;
+                        Console.WriteLine("iPixelFormatMono16 : " + nodeMap.GetNode<IEnum>("PixelFormat").ToString());
+                    }
+
+                    IEnum iTemperatureLinearMode = nodeMap.GetNode<IEnum>("IRFormat");
+                    if (iTemperatureLinearMode != null && iTemperatureLinearMode.IsWritable)
+                    {
+                        IEnumEntry iTemperatureLinearMode100mk = iTemperatureLinearMode.GetEntryByName("TemperatureLinear100mK");
+                        iTemperatureLinearMode.Value = iTemperatureLinearMode100mk.Value;
+
+                        mConvertOffsetVal = mOffsetVal_01;
+
+                        Console.WriteLine("iTemperatureLinearMode 100mk : " + nodeMap.GetNode<IEnum>("IRFormat").ToString());
+                    }
+                }
+                else if (modelname.Contains("A400")) // A400
+                {
+                    stIntCamFrameArray = int320240;
+                    mCurWidth = 320;
+                    mCurHeight = 240;
 
                     bmp = new Bitmap(mCurWidth, mCurHeight);
 
