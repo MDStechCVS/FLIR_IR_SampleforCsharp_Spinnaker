@@ -23,7 +23,7 @@ Windows11
 
 ### [Spinnaker SDK 3.1.0.97 Download site ( FLIR Site (Login Only) )](https://www.flir.com/support-center/iis/machine-vision/downloads/spinnaker-sdk-download/spinnaker-sdk--download-files/)
 
-
+<img width="650" alt="first" src="https://github.com/MDStechCVS/FLIR_IR_SampleforCsharp_Spinnaker/assets/142575573/3aad27c8-86f5-4564-964e-d7c2c9ccaaf9">
 
 
 
