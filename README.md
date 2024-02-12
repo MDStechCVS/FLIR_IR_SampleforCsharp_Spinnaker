@@ -15,10 +15,10 @@ This is pure example code, and optimization and exception handling are up to the
 FLIR IR Camera Ax5
 
 
-Spinnaker SDK 3.1.0.97
+Spinnaker SDK 3.1.0.97 (x86 version recommended)
 
 
-Windows11
+Windows10, Windows11
 
 
 ### [Spinnaker SDK 3.1.0.97 Download site ( FLIR Site (Login Only) )](https://www.flir.com/support-center/iis/machine-vision/downloads/spinnaker-sdk-download/spinnaker-sdk--download-files/)
