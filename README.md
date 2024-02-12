@@ -36,8 +36,13 @@ Windows10, Windows11
  Download the Spinnaker SDK from the site above, install it, and then build the source.
 
 
-프로그램을 실행 후, 아래와 같이 연결하고자 하는 카메라를 선택하면 영상과 온도값이 출력됩니다. 
+ExtDll폴더에 있는 en-US폴더를 복사하여 실행파일이 있는곳에 복사 합니다. (한번만 하면 됩니다).
 
+
+Copy the en-US folder in the ExtDll folder and copy it to the location where the .exe file is located. (You only need to do it once).
+
+
+프로그램을 실행 후, 아래와 같이 연결하고자 하는 카메라를 선택하면 영상과 온도값이 출력됩니다. 
  
 
 After running the program, select the camera you want to connect as shown below, and video and temperature values will be output.
